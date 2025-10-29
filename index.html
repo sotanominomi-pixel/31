@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>N Clock — Nclock</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <h1 class="title">N Clock</h1>
+    </header>
+
+    <!-- Display -->
+    <main class="main">
+      <div id="display" class="time-display">00:00:00</div>
+
+      <!-- slider (clock mode only) -->
+      <div id="sliderBox" class="slider-box">
+        <div class="label-row">
+          <div class="label-left">1日の長さ</div>
+          <div id="labelHours" class="label-right">24 時間</div>
+        </div>
+        <input id="sliderHours" type="range" min="12" max="48" step="1" value="24" aria-label="1日の長さ">
+      </div>
+
+      <!-- mode tabs -->
+      <nav class="tabs" role="tablist" aria-label="mode">
+        <button id="tabClock" class="tab active">時計</button>
+        <button id="tabStopwatch" class="tab">ストップウォッチ</button>
+        <button id="tabAlarm" class="tab">アラーム</button>
+      </nav>
+
+      <!-- stopwatch area -->
+      <section id="stopwatchArea" class="panel" aria-hidden="true">
+        <div class="controls">
+          <button id="swStart" class="btn-circle btn-start">Start</button>
+          <button id="swLap" class="btn-rect" disabled>Lap</button>
+          <button id="swReset" class="btn-rect" disabled>Reset</button>
+        </div>
+        <div id="lapList" class="lap-list" aria-live="polite"></div>
+      </section>
+
+      <!-- alarm area -->
+      <section id="alarmArea" class="panel" aria-hidden="true">
+        <div class="alarm-controls">
+          <input id="alarmTime" type="time" class="time-input" step="60" />
+          <button id="alarmSetBtn" class="btn-large">アラーム追加</button>
+        </div>
+        <div id="alarmsContainer" class="alarms-container"></div>
+      </section>
+    </main>
+
+    <footer class="footer">設定は自動で保存されます。</footer>
+  </div>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>
